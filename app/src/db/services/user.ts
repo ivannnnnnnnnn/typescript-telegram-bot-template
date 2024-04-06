@@ -28,7 +28,6 @@ export class UserService extends AbstractService {
 
   getOrCreate = async (tgUser: User): Promise<DbUser> => {
     let dbUser = await this.getUserByTgId(tgUser.id);
-    console.debug(dbUser);
     if (!dbUser) {
       let [newUser] = await this.db
         .insert(userTable)
@@ -39,14 +38,9 @@ export class UserService extends AbstractService {
         .returning();
       return newUser;
     }
-    console.debug(
-      'Have difference',
-      this.haveDifference(dbUser, tgUser),
-      tgUser
-    );
-    // if (!this.haveDifference(dbUser, tgUser)) {
-    //     return dbUser;
-    // }
+    if (!this.haveDifference(dbUser, tgUser)) {
+      return dbUser;
+    }
     const [updatedUser] = await this.db
       .update(userTable)
       .set({

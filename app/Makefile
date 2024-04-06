@@ -13,6 +13,11 @@ migrate:
 	@npm run migrate
 
 
+.PHONY: prettier
+prettier:
+	@npm run prettier
+
+
 .PHONY: chmod
 chmod:
 	@chmod -R a+w ./
