@@ -60,7 +60,7 @@
 
 ```
     up - start application (docker-compose up)
-    up-silend - start in detached mode (docker-compose up -d)
+    up-silent - start in detached mode (docker-compose up -d)
     rebuild - rebuild all containers (docker-compose up --build)
     down - stop and remove container (docker-compose down)
     shell (container_name) - open container shell (docker-compose exec <container_name> /bin/bash)
